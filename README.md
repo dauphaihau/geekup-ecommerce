@@ -17,6 +17,8 @@ pnpm install
 
 # Run the local Docker environment:
 pnpm docker:up:local
+
+# Once the services are running, visit http://localhost:3000/docs to view the API documentation.
 ```
 
 ## Support

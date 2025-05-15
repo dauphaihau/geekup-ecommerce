@@ -3,9 +3,14 @@ import {
   ConflictException,
   NotFoundException,
 } from '@nestjs/common';
-import { VoucherRepository } from '@modules/api/voucher/voucher.repository';
+import {
+  Voucher,
+  VoucherRepository,
+} from '@modules/api/voucher/voucher.repository';
 import { CreateVoucherDto } from './dto/create-voucher.dto';
 import { UpdateVoucherDto } from './dto/update-voucher.dto';
+import { PaginationRequestDto } from '@common/pagination/pagination-request.dto';
+import { PaginationResponseDto } from '@common/pagination/pagination-response.dto';
 
 @Injectable()
 export class AdminVoucherService {
@@ -23,23 +28,11 @@ export class AdminVoucherService {
     return this.voucherRepo.create(createVoucherDto);
   }
 
-  // async findAll(page = 1, limit = 10) {
-  //   const offset = (page - 1) * limit;
-  //   const [vouchers, total] = await Promise.all([
-  //     this.voucherRepo.find({}, { offset, limit }),
-  //     this.voucherRepo.count(),
-  //   ]);
-  //
-  //   return {
-  //     data: vouchers,
-  //     meta: {
-  //       total,
-  //       page,
-  //       limit,
-  //       totalPages: Math.ceil(total / limit),
-  //     },
-  //   };
-  // }
+  async findWithPagination(
+    paginationRequestDto: PaginationRequestDto,
+  ): Promise<PaginationResponseDto<Voucher>> {
+    return await this.voucherRepo.findWithPagination(paginationRequestDto);
+  }
 
   async findOne(id: string) {
     const voucher = await this.voucherRepo.findById(id);

@@ -1,0 +1,863 @@
+{
+	"info": {
+		"_postman_id": "351df898-47ae-442e-b243-9f4c68212894",
+		"name": "geekup-ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16162136",
+		"_collection_link": "https://galactic-sunset-643307.postman.co/workspace/95afddf5-ddde-4a0c-969b-60e000034798/collection/16162136-351df898-47ae-442e-b243-9f4c68212894?action=share&source=collection_link&creator=16162136"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "password reset",
+					"item": [
+						{
+							"name": "request reset token",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"dauphaihau@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/auth/password-reset",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{api_prefix}}",
+										"v{{api_version}}",
+										"auth",
+										"password-reset"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify token",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"dauphaihau@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/auth/password-reset?token=3b234b62de6d8a71f2930d5dda1e64a0ac4909c2b8b8d51dd2ddffdb54e51383",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{api_prefix}}",
+										"v{{api_version}}",
+										"auth",
+										"password-reset"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "3b234b62de6d8a71f2930d5dda1e64a0ac4909c2b8b8d51dd2ddffdb54e51383"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update password",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"hau10\",\n    \"token\": \"f8427ac164804f38a8d8260b049ed283a8788ef7aec1ba73c75e6811aa5ca045\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/auth/password-reset",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{api_prefix}}",
+										"v{{api_version}}",
+										"auth",
+										"password-reset"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"dauphaihau@gmail.com\",\n    \"username\": \"hau\",\n    \"first_name\": \"Hau\",\n    \"last_name\": \"Tran\",\n    \"password\": \"Hauhauu11.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/auth/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"identifier\": \"0901111921\",\n    // \"identifier\": \"hhau11111\",\n    // \"identifier\": \"user@example.com\",\n    // \"password\": \"user123\"\n    \"identifier\": \"admin@example.com\",\n    \"password\": \"admin123\"\n    // \"identifier\": \"dauphaihau@gmail.com\",\n    // \"password\": \"Hauhauu11.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"dauphaihau1@gmail.com\",\n    \"password\": \"securepassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/auth",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "get user list",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/admin/users?limit=2&page=1&sortBy=first_name&sortOrder=DESC",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{api_prefix}}",
+										"v{{api_version}}",
+										"admin",
+										"users"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "2"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "sortBy",
+											"value": "first_name"
+										},
+										{
+											"key": "sortOrder",
+											"value": "DESC"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create user",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/admin/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{api_prefix}}",
+										"v{{api_version}}",
+										"admin",
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "voucher",
+					"item": [
+						{
+							"name": "get vouchers list",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/admin/users?limit=2&page=1&sortBy=first_name&sortOrder=DESC",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{api_prefix}}",
+										"v{{api_version}}",
+										"admin",
+										"users"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "2"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "sortBy",
+											"value": "first_name"
+										},
+										{
+											"key": "sortOrder",
+											"value": "DESC"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update voucher",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"code\": \"10OFF\",\n    \"discount_value\": 20\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/admin/vouchers/67330e05-5ef3-4954-bc07-179ae209c974",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{api_prefix}}",
+										"v{{api_version}}",
+										"admin",
+										"vouchers",
+										"67330e05-5ef3-4954-bc07-179ae209c974"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "products list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"products"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "order_by",
+									"value": "product_name",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "desc",
+									"disabled": true
+								},
+								{
+									"key": "category_id",
+									"value": "f0e34332-887d-49a3-9ef8-16a900fa9cbc",
+									"disabled": true
+								},
+								{
+									"key": "s",
+									"value": "superhero",
+									"description": "search base on product_name or description",
+									"disabled": true
+								},
+								{
+									"key": "min",
+									"value": "100",
+									"disabled": true
+								},
+								{
+									"key": "max",
+									"value": "500",
+									"disabled": true
+								},
+								{
+									"key": "store_id",
+									"value": "70e21e00-1289-4d63-a547-1a0c87762694",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "categories list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/categories?order_by=category_name&sort=desc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "order_by",
+									"value": "category_name"
+								},
+								{
+									"key": "sort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "get payment methods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/payments/methods",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"payments",
+								"methods"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "create address",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"street_address\": \"10 Pasteur\",\n    \"city\": \"Saigon\",\n    \"state_province\": \"Saigon\",\n    \"postal_code\": \"700000\",\n    \"country\": \"Vietnam\"\n    // \"is_default\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/addresses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"addresses"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "item",
+					"item": [
+						{
+							"name": "add cart item",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"variant_id\": \"10 Pasteur\",\n    \"quantity\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/addresses",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"{{api_prefix}}",
+										"v{{api_version}}",
+										"addresses"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "buy now",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"shipping_address_id\": \"0db4ec51-0b0c-4177-81a4-16041de051fb\",\n    \"payment_method_id\": \"015ba985-3389-40df-b89a-20f6d61ecd1b\",\n    \"variant_id\": \"10eb8f5e-2d07-4841-a2ab-82b3d7a110b1\",\n    \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/orders/buy-now",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"orders",
+								"buy-now"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "analytics",
+			"item": [
+				{
+					"name": "churn rate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"shipping_address_id\": \"10 Pasteur\",\n    \"payment_method_id\": \"806092a4-ca9e-41b1-bdf3-fcd2a09034fd\",\n    \"variant_id\": \"\",\n    \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/analytics/churn-rate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"analytics",
+								"churn-rate"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2023-01-01",
+									"disabled": true
+								},
+								{
+									"key": "to_date",
+									"value": "2023-05-01",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "average order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"shipping_address_id\": \"10 Pasteur\",\n    \"payment_method_id\": \"806092a4-ca9e-41b1-bdf3-fcd2a09034fd\",\n    \"variant_id\": \"\",\n    \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/analytics/average-order?year=2025",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{api_prefix}}",
+								"v{{api_version}}",
+								"analytics",
+								"average-order"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2025"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}",
+					"host": [
+						"{{base_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/dauphaihau/Downloads/f6306cbb3e4fc8d7423f1d8a8704f791.JPG"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/{{api_prefix}}/v{{api_version}}/files/upload",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{api_prefix}}",
+						"v{{api_version}}",
+						"files",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

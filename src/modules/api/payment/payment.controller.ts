@@ -1,4 +1,4 @@
-import { Controller, Post, Res, Req, Headers, Inject } from '@nestjs/common';
+import { Controller, Post, Res, Req, Headers, Inject, Get } from '@nestjs/common';
 import { PaymentService } from './payment.service';
 import { ApiExcludeEndpoint } from '@nestjs/swagger';
 import { STRIPE_CLIENT } from '@modules/payment-gateways/stripe/stripe.module';
@@ -11,9 +11,13 @@ export class PaymentController {
     @Inject(STRIPE_CLIENT) private stripe: Stripe,
   ) {}
 
+  @Get('methods')
+  async getPaymentMethods() {
+    return this.paymentService.getPaymentMethods();
+  }
+
   @Post('stripe/webhook')
   @ApiExcludeEndpoint()
-  // handleEvents(@Body() paymentCallbackDto: PaymentCallbackDto) {
   async handleWebhook(
     @Req() req,
     @Res() res,
@@ -22,8 +26,7 @@ export class PaymentController {
     const event = this.stripe.webhooks.constructEvent(
       req.rawBody,
       signature,
-      // process.env.STRIPE_WEBHOOK_SECRET,
-      'whsec_5ccc90f9706489afadef1c673e06e59efc3709a633b83d6407043ca2435d229e',
+      process.env.STRIPE_WEBHOOK_SECRET,
     );
 
     console.log('event-type', event.type);
@@ -31,10 +34,8 @@ export class PaymentController {
     // Handle event.type
     switch (event.type) {
       case 'checkout.session.completed':
-        console.log('csc');
         // Handle success
         break;
-
     }
 
     // return this.paymentService.handlePaymentCallback(paymentCallbackDto);

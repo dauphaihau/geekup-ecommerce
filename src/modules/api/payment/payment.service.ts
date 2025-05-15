@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { PaymentCallbackDto } from './dto/payment-callback.dto';
 import { Transactional } from '@nestjs-cls/transactional';
+import { PaymentMethodRepository } from '@modules/api/payment/repositories/payment.repository';
 
 @Injectable()
 export class PaymentService {
+  constructor(private readonly paymentMethodRepo: PaymentMethodRepository) {}
+
+  async getPaymentMethods() {
+    return this.paymentMethodRepo.findAll();
+  }
+
   @Transactional()
   async handlePaymentCallback(paymentCallbackDto: PaymentCallbackDto) {
     // TODO: Implement transaction retrieval

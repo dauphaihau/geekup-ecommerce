@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { ApiTags, ApiResponse } from '@nestjs/swagger';
 import { AdminVoucherService } from './admin-voucher.service';
@@ -16,6 +17,7 @@ import JwtAuthenticationGuard from '@app/guards/jwt-authentication.guard';
 import { RolesGuard } from '@app/guards/roles.guard';
 import { Roles } from '@app/decorators/roles.decorator';
 import { Role } from '@app/constants/role.enum';
+import { PaginationRequestDto } from '@common/pagination/pagination-request.dto';
 
 @ApiTags('Admin Voucher')
 @UseGuards(JwtAuthenticationGuard, RolesGuard)
@@ -30,11 +32,11 @@ export class AdminVoucherController {
     return this.adminVoucherService.create(createVoucherDto);
   }
 
-  // @Get()
-  // @ApiResponse({ status: 200, description: 'Return all vouchers' })
-  // findAll(@Query('page') page?: number, @Query('limit') limit?: number) {
-  //   return this.adminVoucherService.findAll(page, limit);
-  // }
+  @Get()
+  @ApiResponse({ status: 200, description: 'Return all vouchers' })
+  findAll(@Query() query: PaginationRequestDto) {
+    return this.adminVoucherService.findWithPagination(query);
+  }
 
   @Get(':id')
   @ApiResponse({ status: 200, description: 'Return the voucher' })
