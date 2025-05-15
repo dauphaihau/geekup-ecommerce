@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      target: install-deps
+    command: pnpm start:dev
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=local
+    ports:
+      - "3000:3000"
+
+  db:
+    ports:
+      - "5433:5432"
+
+  redis:
+    ports:
+      - "6380:6379"

@@ -1,0 +1,46 @@
+services:
+  app:
+    build:
+      context: .
+      target: production
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    environment:
+      - DB_HOST=db
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+
+  db:
+#    image: postgres:15-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/migrations:/migrations
+      - ./db/seeds:/seeds
+    healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME}"]
+        interval: 5s
+        timeout: 5s
+        retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - redis-data:/data
+    restart: always
+
+volumes:
+  db-data:
+  redis-data:
+

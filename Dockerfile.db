@@ -1,0 +1,7 @@
+FROM postgres:15-alpine
+
+COPY scripts/docker-entrypoint-init.sh /docker-entrypoint-init.sh
+
+RUN chmod +x /docker-entrypoint-init.sh
+
+ENTRYPOINT ["/docker-entrypoint-init.sh"]
